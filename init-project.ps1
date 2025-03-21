@@ -1,4 +1,4 @@
-# PowerShell 交互式初始化脚本
+﻿# PowerShell 交互式初始化脚本
 
 function Show-Welcome {
     Write-Host "`n欢迎使用 Windsurf 敏捷工作流工具包！" -ForegroundColor Cyan
@@ -39,7 +39,7 @@ function Initialize-Directory {
         $fullPath = Join-Path $path $dir
         if (-not (Test-Path $fullPath)) {
             New-Item -ItemType Directory -Path $fullPath | Out-Null
-            Write-Host "✓ 创建目录: $dir" -ForegroundColor Green
+            Write-Host " 创建目录: $dir" -ForegroundColor Green
         }
     }
 }
@@ -64,7 +64,7 @@ function Copy-Templates {
         
         if (Test-Path $sourcePath) {
             Copy-Item $sourcePath $targetFilePath -Force
-            Write-Host "✓ 复制模板: $file" -ForegroundColor Green
+            Write-Host " 复制模板: $file" -ForegroundColor Green
         }
     }
 }
@@ -88,7 +88,7 @@ function Copy-ConfigFiles {
         
         if (Test-Path $sourcePath) {
             Copy-Item $sourcePath $targetFilePath -Force
-            Write-Host "✓ 复制配置: $file ($($configFiles[$file]))" -ForegroundColor Green
+            Write-Host " 复制配置: $file ($($configFiles[$file]))" -ForegroundColor Green
         }
     }
 }
@@ -104,7 +104,7 @@ function Initialize-Git {
     
     if (-not (Test-Path ".git")) {
         git init
-        Write-Host "✓ Git 仓库已初始化" -ForegroundColor Green
+        Write-Host " Git 仓库已初始化" -ForegroundColor Green
     }
     
     Pop-Location
@@ -115,7 +115,7 @@ function Show-NextSteps {
         [string]$projectName
     )
     
-    Write-Host "`n🎉 项目初始化完成！" -ForegroundColor Cyan
+    Write-Host "`n 项目初始化完成！" -ForegroundColor Cyan
     Write-Host "`n接下来的步骤：" -ForegroundColor Yellow
     Write-Host "1. 进入项目目录"
     Write-Host "2. 编辑 .ai/prd.md 文件，开始定义您的项目需求"
