@@ -1,0 +1,100 @@
+---
+description: 在被要求创建、更新规则或学习用户教训时始终使用，这些教训应作为 Windsurf 的新规则保留
+globs: .windsurf/rules/*.mdc
+alwaysApply: false
+---
+# Windsurf 规则格式
+## 规则文件模板结构
+
+```mdc
+---
+description: 当 TRIGGER 发生时执行 ACTION 以达到 OUTCOME
+globs: .windsurf/rules/**/*.mdc
+alwaysApply: {true 或 false}
+---
+
+# 规则标题
+
+## 上下文
+- 何时应用此规则
+- 先决条件或条件
+
+## 要求
+- 简洁、可操作的项目
+- 每个要求必须可测试
+
+## 示例
+<example>
+好的简洁示例及其解释
+</example>
+
+<example type="invalid">
+无效的简洁示例及其解释
+</example>
+
+## 关键规则
+  - 始终执行 X
+  - 绝不执行 Y
+```
+
+## 文件组织
+
+### 位置
+- 路径：`.windsurf/rules/`
+- 扩展名：`.mdc`
+
+### 命名约定
+PREFIX-名称.mdc，其中 PREFIX 是：
+- 0XX：核心标准
+- 1XX：工具配置
+- 3XX：测试标准
+- 1XXX：语言规则
+- 2XXX：框架规则
+- 8XX：工作流
+- 9XX：模板
+- _名称.mdc：私有规则
+
+### Glob 模式示例
+不同规则类型的常见 Glob 模式：
+- 核心标准：.windsurf/rules/*.mdc
+- 语言规则：src/**/*.{js,ts}
+- 测试标准：**/*.test.{js,ts}
+- React 组件：src/components/**/*.tsx
+- 文档：docs/**/*.md
+- 配置文件：*.config.{js,json}
+- 构建工件：dist/**/*
+- 多个扩展名：src/**/*.{js,jsx,ts,tsx}
+- 多个文件：dist/**/*, docs/**/*.md
+
+## 必填字段
+
+### 前置元数据
+- description：ACTION TRIGGER OUTCOME 格式
+- globs：`文件和文件夹的 Glob 模式`
+- alwaysApply：{true 或 false} - 当为 true 时，将附加到每个对话（但前置元数据仍然很重要，以便其被使用！）
+
+### 正文
+- 上下文：使用条件
+- 要求：可操作的项目
+- 示例：有效和无效示例
+- 关键规则：最关键的规则摘要
+
+## 格式指南
+
+- 使用简洁的 Markdown
+- 仅使用以下 XML 标签：
+  - <example>
+  - <danger>
+  - <required>
+- 始终在 XML 或嵌套 XML 标签内的内容缩进 2 个空格
+- 允许使用表情符号和 Mermaid 图表，但仅当它们不是冗余的，并且更好地解释了规则以供 AI 理解时
+
+## 关键规则
+  - 保持前置元数据描述在 120 个字符以内（或更少），同时保持清晰的意图以供 AI 代理选择规则
+  - 保持规则的 DRY - 不要重复或冗余或过度解释
+  - 使用简洁的 Markdown，使 AI 代理易于理解
+  - 前置元数据必须始终包含描述、Glob 模式和 alwaysApply，即使值为 null
+  - 使用标准的 Glob 模式，不带引号（例如，*.js，src/**/*.ts）
+  - 尝试保持规则的总行数在 50 行以下，最佳在 25 行以下（除非有图表或更长的必需示例，否则会增加总行数）
+  - 始终包含有效和无效示例
+  - 不需要在 Glob 模式周围使用引号

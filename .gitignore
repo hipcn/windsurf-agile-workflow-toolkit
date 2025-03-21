@@ -1,2 +1,2 @@
-# Private individual user cursor rules
-.cursor/rules/_*.mdc
+# 私有个人用户 Windsurf 规则
+.windsurf/rules/_*.mdc

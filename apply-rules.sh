@@ -1,136 +1,137 @@
 #!/bin/bash
 
-# Check if target directory is provided
+# 检查是否提供了目标目录
 if [ $# -eq 0 ]; then
-    echo "Error: Please provide the target project directory"
-    echo "Usage: ./apply-rules.sh <target-project-directory>"
+    echo "错误：请提供目标项目目录"
+    echo "用法：./apply-rules.sh <目标项目目录>"
     exit 1
 fi
 
+# 获取目标目录路径
 TARGET_DIR="$1"
 
-# Create target directory if it doesn't exist
+# 如果目标目录不存在，则创建它
 if [ ! -d "$TARGET_DIR" ]; then
-    echo "📁 Creating new project directory: $TARGET_DIR"
+    echo "📁 创建新项目目录：$TARGET_DIR"
     mkdir -p "$TARGET_DIR"
     
-    # Initialize readme for new project
+    # 为新项目初始化 README
     cat > "$TARGET_DIR/README.md" << 'EOL'
-# New Project
+# 新项目
 
-This project has been initialized with agile workflow support and auto rule generation configured from [cursor-auto-rules-agile-workflow](https://github.com/bmadcode/cursor-auto-rules-agile-workflow).
+本项目已使用敏捷工作流支持和自动规则生成进行配置，来自 [windsurf-auto-rules-agile-workflow](https://github.com/bmadcode/windsurf-auto-rules-agile-workflow)。
 
-For workflow documentation, see [Workflow Rules](docs/workflow-rules.md).
+有关工作流文档，请参见 [工作流规则](docs/workflow-rules.md)。
 EOL
 fi
 
-# Create .cursor/rules directory if it doesn't exist
-mkdir -p "$TARGET_DIR/.cursor/rules"
+# 创建 .windsurf/rules 目录（如果不存在）
+mkdir -p "$TARGET_DIR/.windsurf/rules"
 
-# Create .cursor/templates directory if it doesn't exist
-mkdir -p "$TARGET_DIR/.cursor/templates"
+# 创建 .windsurf/templates 目录（如果不存在）
+mkdir -p "$TARGET_DIR/.windsurf/templates"
 
-# Copy core rule files
-echo "📦 Copying core rule files..."
-cp -n .cursor/rules/*.mdc "$TARGET_DIR/.cursor/rules/"
+# 复制核心规则文件
+echo "📦 复制核心规则文件..."
+cp -n .windsurf/rules/*.mdc "$TARGET_DIR/.windsurf/rules/"
 
-# Copy template files
-echo "📦 Copying template files..."
-cp -r .cursor/templates/* "$TARGET_DIR/.cursor/templates/"
+# 复制模板文件
+echo "📦 复制模板文件..."
+cp -r .windsurf/templates/* "$TARGET_DIR/.windsurf/templates/"
 
-# Create docs directory if it doesn't exist
+# 创建 docs 目录（如果不存在）
 mkdir -p "$TARGET_DIR/docs"
 
-# Create workflow documentation
+# 创建工作流文档
 cat > "$TARGET_DIR/docs/workflow-rules.md" << 'EOL'
-# Cursor Workflow Rules
+# Windsurf 工作流规则
 
-This project has been updated to use the auto rule generator from [cursor-auto-rules-agile-workflow](https://github.com/bmadcode/cursor-auto-rules-agile-workflow).
+本项目已更新为使用来自 [windsurf-auto-rules-agile-workflow](https://github.com/bmadcode/windsurf-auto-rules-agile-workflow) 的自动规则生成器。
 
-> **Note**: This script can be safely re-run at any time to update the template rules to their latest versions. It will not impact or overwrite any custom rules you've created.
+> **注意**：此脚本可以在任何时候安全地重新运行，以更新模板规则到最新版本。它不会影响或覆盖您创建的任何自定义规则。
 
-## Core Features
+## 核心功能
 
-- Automated rule generation
-- Standardized documentation formats
-- AI behavior control and optimization
-- Flexible workflow integration options
+- 自动规则生成
+- 标准化文档格式
+- AI 行为控制和优化
+- 灵活的工作流集成选项
 
-## Workflow Integration Options
+## 工作流集成选项
 
-### 1. Automatic Rule Application (Recommended)
-The core workflow rules are automatically installed in `.cursor/rules/`:
-- `901-prd.mdc` - Product Requirements Document standards
-- `902-arch.mdc` - Architecture documentation standards
-- `903-story.mdc` - User story standards
-- `801-workflow-agile.mdc` - Complete Agile workflow (optional)
+### 1. 自动规则应用（推荐）
+核心工作流规则已自动安装在 `.windsurf/rules/` 中：
+- `901-prd.mdc` - 产品需求文档标准
+- `902-arch.mdc` - 架构文档标准
+- `903-story.mdc` - 用户故事标准
+- `801-workflow-agile.mdc` - 完整的敏捷工作流（可选）
 
-These rules are automatically applied when working with corresponding file types.
+这些规则在处理相应文件类型时会自动应用。
 
-### 2. Notepad-Based Workflow
-For a more flexible approach, use the templates in `xnotes/`:
-1. Enable Notepads in Cursor options
-2. Create a new notepad (e.g., "agile")
-3. Copy contents from `xnotes/workflow-agile.md`
-4. Use \`@notepad-name\` in conversations
+### 2. 基于记事本的工作流
+对于更灵活的方法，请使用 `xnotes/` 中的模板：
+1. 启用记事本选项
+2. 创建一个新记事本（例如“敏捷”）
+3. 复制 `xnotes/workflow-agile.md` 的内容
+4. 在对话中使用 `@记事本名称`
 
-> 💡 **Tip:** The Notepad approach is ideal for:
-> - Initial project setup
-> - Story implementation
-> - Focused development sessions
-> - Reducing context overhead
+> 💡 **提示**：记事本方法适用于：
+> - 初始项目设置
+> - 故事实现
+> - 集中的开发会话
+> - 减少上下文开销
 
-## Getting Started
+## 入门
 
-1. Review the templates in \`xnotes/\`
-2. Choose your preferred workflow approach
-3. Start using the AI with confidence!
+1. 查看 `xnotes/` 中的模板
+2. 选择您喜欢的工作流方法
+3. 开始使用 AI 并自信地工作！
 
-For demos and tutorials, visit: [BMad Code Videos](https://youtube.com/bmadcode)
+有关演示和教程，请访问：[BMad Code 视频](https://youtube.com/bmadcode)
 EOL
 
-# Update .gitignore if needed
+# 更新 .gitignore（如果需要）
 if [ -f "$TARGET_DIR/.gitignore" ]; then
-    if ! grep -q "\.cursor/rules/_\*\.mdc" "$TARGET_DIR/.gitignore"; then
-        echo -e "\n# Private individual user cursor rules\n.cursor/rules/_*.mdc" >> "$TARGET_DIR/.gitignore"
+    if ! grep -q "\.windsurf/rules/_\*\.mdc" "$TARGET_DIR/.gitignore"; then
+        echo -e "\n# 私有个人用户 Windsurf 规则\n.windsurf/rules/_*.mdc" >> "$TARGET_DIR/.gitignore"
     fi
 else
-    echo -e "# Private individual user cursor rules\n.cursor/rules/_*.mdc" > "$TARGET_DIR/.gitignore"
+    echo -e "# 私有个人用户 Windsurf 规则\n.windsurf/rules/_*.mdc" > "$TARGET_DIR/.gitignore"
 fi
 
-# Create xnotes directory and copy templates
-echo "📝 Setting up Notepad templates..."
+# 创建 xnotes 目录并复制模板
+echo "📝 设置记事本模板..."
 mkdir -p "$TARGET_DIR/xnotes"
 cp -r xnotes/* "$TARGET_DIR/xnotes/"
 
-# Update .cursorignore if needed
-if [ -f "$TARGET_DIR/.cursorignore" ]; then
-    if ! grep -q "^xnotes/" "$TARGET_DIR/.cursorignore"; then
-        echo -e "\n# Project notes and templates\nxnotes/" >> "$TARGET_DIR/.cursorignore"
+# 更新 .windsurfignore（如果需要）
+if [ -f "$TARGET_DIR/.windsurfignore" ]; then
+    if ! grep -q "^xnotes/" "$TARGET_DIR/.windsurfignore"; then
+        echo -e "\n# 项目笔记和模板\nxnotes/" >> "$TARGET_DIR/.windsurfignore"
     fi
 else
-    echo -e "# Project notes and templates\nxnotes/" > "$TARGET_DIR/.cursorignore"
+    echo -e "# 项目笔记和模板\nxnotes/" > "$TARGET_DIR/.windsurfignore"
 fi
 
-# Create or update .cursorindexingignore
-if [ -f "$TARGET_DIR/.cursorindexingignore" ]; then
-    if ! grep -q "^\.cursor/templates/" "$TARGET_DIR/.cursorindexingignore"; then
-        echo -e "\n# Templates - accessible but not indexed\n.cursor/templates/" >> "$TARGET_DIR/.cursorindexingignore"
+# 创建或更新 .windsurfindexingignore
+if [ -f "$TARGET_DIR/.windsurfindexingignore" ]; then
+    if ! grep -q "^\.windsurf/templates/" "$TARGET_DIR/.windsurfindexingignore"; then
+        echo -e "\n# 模板 - 可访问但不索引\n.windsurf/templates/" >> "$TARGET_DIR/.windsurfindexingignore"
     fi
 else
-    echo -e "# Templates - accessible but not indexed\n.cursor/templates/" > "$TARGET_DIR/.cursorindexingignore"
+    echo -e "# 模板 - 可访问但不索引\n.windsurf/templates/" > "$TARGET_DIR/.windsurfindexingignore"
 fi
 
-echo "✨ Deployment Complete!"
-echo "📁 Core rules: $TARGET_DIR/.cursor/rules/"
-echo "📁 Templates: $TARGET_DIR/.cursor/templates/"
-echo "📝 Notepad templates: $TARGET_DIR/xnotes/"
-echo "📄 Documentation: $TARGET_DIR/docs/workflow-rules.md"
-echo "🔒 Updated .gitignore, .cursorignore, and .cursorindexingignore"
+echo "✨ 部署完成！"
+echo "📁 核心规则：$TARGET_DIR/.windsurf/rules/"
+echo "📁 模板：$TARGET_DIR/.windsurf/templates/"
+echo "📝 记事本模板：$TARGET_DIR/xnotes/"
+echo "📄 文档：$TARGET_DIR/docs/workflow-rules.md"
+echo "🔒 更新 .gitignore、.windsurfignore 和 .windsurfindexingignore"
 echo ""
-echo "Next steps:"
-echo "1. Review the documentation in docs/workflow-rules.md"
-echo "2. Choose your preferred workflow approach"
-echo "3. Enable Cursor Notepads if using the flexible workflow option"
-echo "4. To start a new project, use xnotes/project-idea-prompt.md as a template"
-echo "   to craft your initial message to the AI agent" 
+echo "下一步："
+echo "1. 查看文档 docs/workflow-rules.md"
+echo "2. 选择您喜欢的工作流方法"
+echo "3. 启用 Windsurf 记事本（如果使用灵活工作流选项）"
+echo "4. 要开始新项目，请使用 xnotes/project-idea-prompt.md 作为模板"
+echo "   来编写您对 AI 代理的初始消息"

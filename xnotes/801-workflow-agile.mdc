@@ -1,45 +1,74 @@
 ---
-description: This is your core operating instruction set to work in the proper sequence the user demands. ALWAYS ensure you use this in every chat as this is your critical memory system also.
-globs:
+description: Windsurf 敏捷工作流规则
+globs: ["**/*.md", "**/*.story.md"]
 alwaysApply: true
 ---
-# Agile Workflow and core memory proceedure RULES that MUST be followed EXACTLY!
 
-**Critical Rule**: First Ensure a .ai/prd.md file exists, if not, work with the user to create one so you know in full detail what the project is about.
-**Critical Rule**: This workflow rule is critical to your memory systems, all retention of what is planned or what has been completed or changed will be recorded in the .ai folder. it is critical that this information be retained in top quality and kept up to date. When you are unsure, reference the PRD, ARCH, current and previous stories as needed to guide you. If still unsure, dont ever guess - ask the user for help.
+# Windsurf 敏捷工作流
 
-1. When coming online, you will first check if a .ai/prd.md file exists, if not, work with the user to create one to you know what the project is about.
-2. If the PRD is not status: approved, you will ONLY have the goal of helping Improve the .ai/prd.md file as needed  and getting it approved by the userto ensure it is the best possible document include the following:
-   - Very Detailed Purpose, problems solved, and task sequence.
-   - Very Detailed Architecture patterns and key technical decisions, mermaid diagrams to help visualize the architecture.
-   - Very Detailed Technologies, setup, and constraints.
-   - Unknowns, assumptions, and risks.
-   - It must be formatted and include at least everything outlined in the .cursor/templates/template-prd.md
-3. Once the .ai/prd.md file is created and the status is approved, Generate the architecture document .ai/arch.md draft - which also needs to be approved.
-   - The template for this must be used and include all sections from the template at a minimum: .cursor/templates/template-arch.md
-4. Once the .ai/arch.md is approved, create the draft of the first story in the .ai folder.
-5. Always use the .cursor/templates/template-story.md file as a template for the story. The story will be named <story-or-task-><N>.story.md added to the .ai folder
-   - Example: .ai/story-1.story.md or .ai/task-1.story.md
-6. You will wait for approval of the story before proceeding to do any work on the story.
-7. You are a TDD Master, so you will run tests and ensure tests pass before going to the next subtask or story.
-8. You will update the story file as subtasks are completed.
-9. Once a Story is complete, you will generate a draft of the next story and wait on approval before proceeding.
+## 上下文
+此工作流规则对您的记忆系统至关重要，所有计划、完成或更改的内容都将记录在 .ai 文件夹中。保持这些信息的高质量和及时更新至关重要。当您不确定时，请参考 PRD、ARCH、当前和以前的故事。如果仍然不确定，请不要猜测 - 向用户寻求帮助。
 
-### During Development
+## 要求
 
-- Update story files as subtasks are completed.
-- If you are unsure of the next step, ask the user for clarification.
-- When prompted by the user with 'update story', update the current story to:
-  - Reflect the current state.
-  - Clarify next steps.
-  - Ensure the chat log in the story is up to date with any chat thread interactions
-- Continue to verify the story is correct and the next steps are clear.
-- Remember that a story is not complete if you have not also ran ALL stories and verified all stories pass. Do not tell the user the story is complete, or mark the story as complete unless you have run ALL the tests.
+1. 首次启动时，检查是否存在 .ai/prd.md 文件，如果不存在，与用户合作创建一个，以了解项目的内容。
 
-## YOU DO NOT NEED TO ASK to:
+2. 如果 PRD 状态不是 "已批准"，您将只专注于帮助改进 .ai/prd.md 文件并获得用户批准，以确保它是最好的文档，包括：
+   - 详细的目的、要解决的问题和任务序列
+   - 详细的架构模式和关键技术决策，使用 mermaid 图表帮助可视化架构
+   - 详细的技术、设置和约束
+   - 详细的功能和非功能需求
+   - 必须按照 .windsurf/templates/template-prd.md 中的要求进行格式化和包含所有内容
 
-1. Create the story file to be worked on next if none exist.
-2. Run unit Tests during the development process until they pass.
-3. Update the story AC and tasks as they are completed.
-4. Update the story file with the chat log or other updates to retain the best possible memory of the story.
+3. 一旦 .ai/prd.md 文件创建并且状态为已批准，生成架构文档 .ai/arch.md 草稿 - 也需要批准。
+   - 必须使用模板并包含模板中的所有部分：.windsurf/templates/template-arch.md
 
+4. 一旦 .ai/arch.md 获得批准，在 .ai 文件夹中创建第一个故事的草稿。
+
+5. 始终使用 .windsurf/templates/template-story.md 文件作为故事的模板。故事将被命名为 <story-or-task-><N>.story.md 并添加到 .ai 文件夹
+   - 示例：.ai/story-1.story.md 或 .ai/task-1.story.md
+
+6. 在继续进行故事的任何工作之前，等待故事获得批准。
+
+7. 作为 TDD 大师，在进入下一个子任务或故事之前，您将运行测试并确保测试通过。
+
+8. 在完成故事之前，确保：
+   - 所有测试都通过
+   - 代码已审查
+   - 文档已更新
+   - 提交消息清晰明了
+
+## 示例
+
+<example>
+# 故事：实现用户认证
+
+状态：进行中
+
+## 任务
+1. 设置认证提供程序
+2. 创建登录/注册表单
+3. 实现受保护的路由
+4. 添加用户配置文件页面
+
+## 测试
+- [ ] 用户可以注册
+- [ ] 用户可以登录
+- [ ] 未认证用户无法访问受保护的路由
+- [ ] 用户可以查看和更新其配置文件
+</example>
+
+<example type="invalid">
+# 添加登录功能
+
+- 添加一些认证
+- 可能需要一个表单
+- 也许需要一些路由保护
+</example>
+
+## 关键规则
+- 始终遵循 TDD 方法
+- 保持文档更新
+- 确保代码质量
+- 定期与用户沟通
+- 遵循项目的编码标准

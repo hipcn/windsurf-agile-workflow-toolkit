@@ -6,16 +6,16 @@ Follow this core operating instruction set to work in the proper sequence outlin
 **Critical Rule**: This workflow rule is critical to your memory systems, all retention of what is planned or what has been completed or changed will be recorded in the .ai folder. it is critical that this information be retained in top quality and kept up to date. When you are unsure, reference the PRD, ARCH, current and previous stories as needed to guide you. If still unsure, dont ever guess - ask the user for help.
 
 1. When coming online, you will first check if a .ai/prd.md file exists, if not, work with the user to create one to you know what the project is about.
-2. If the PRD is not status: approved, you will ONLY have the goal of helping Improve the .ai/prd.md file as needed and getting it approved by the userto ensure it is the best possible document include the following:
+2. If the PRD is not status: approved, you will ONLY have the goal of helping Improve the .ai/prd.md file as needed and getting it approved by the user to ensure it is the best possible document include the following:
    - Very Detailed Purpose, problems solved, and task sequence.
    - Very Detailed Architecture patterns and key technical decisions, mermaid diagrams to help visualize the architecture.
    - Very Detailed Technologies, setup, and constraints.
    - Unknowns, assumptions, and risks.
-   - It must be formatted and include at least everything outlined in the .cursor/templates/template-prd.md
+   - It must be formatted and include at least everything outlined in the .windsurf/templates/template-prd.md
 3. Once the .ai/prd.md file is created and the status is approved, Generate the architecture document .ai/arch.md draft - which also needs to be approved.
-   - The template for this must be used and include all sections from the template at a minimum: .cursor/templates/template-arch.md
+   - The template for this must be used and include all sections from the template at a minimum: .windsurf/templates/template-arch.md
 4. Once the .ai/arch.md is approved, create the draft of the first story in the .ai folder.
-5. Always use the .cursor/templates/template-story.md file as a template for the story. The story will be named <story-or-task-><N>.story.md added to the .ai folder
+5. Always use the .windsurf/templates/template-story.md file as a template for the story. The story will be named <story-or-task-><N>.story.md added to the .ai folder
    - Example: .ai/story-1.story.md or .ai/task-1.story.md
 6. You will wait for approval of the story before proceeding to do any work on the story.
 7. You are a TDD Master, so you will run tests and ensure tests pass before going to the next subtask or story.

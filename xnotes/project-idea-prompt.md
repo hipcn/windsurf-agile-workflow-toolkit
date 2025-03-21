@@ -1,5 +1,24 @@
-Draft your initial prompt or ideas for a project here. Use this to then kickstart the project with the cursor agent mode when using the agile workflow, documented in docs/agile-readme.md. After the initial prd is drafted, work with the LLM in cursor or with an external LLM to ask questions, have the LLM ask you questions, etc., to really define an adequate prd and story list. Then continue with generating of the architecture document to ensure the project is built in a way that is easy to maintain and scale as you need it to be, along with a clear specification of what technologies and libraries you want to use. This will also help you figure out what rules you might want to initiall generate to help you build the project.
+# 项目创意提示
 
-Example:
+在这里起草您的项目初始想法或构思。使用这个模板来启动 Windsurf 代理模式下的项目，相关敏捷工作流程请参考 docs/agile-readme.md。
 
-@agile <or rely on the rules with the workflow to be in place if not using notepads> Lets built a nextJs 15 web app to track our monthly income and expenses. I want a modern UI, secure storage in supabase, and a modern API. Etc...
+在起草初始 PRD 后，您可以：
+1. 与 Windsurf 中的 AI 或外部 AI 进行交互
+2. 提出问题，让 AI 向您提问
+3. 充分定义合适的 PRD 和故事列表
+
+然后继续生成架构文档，以确保项目：
+- 易于维护和扩展
+- 明确指定技术栈和库的选择
+- 帮助确定初始需要生成的规则
+
+## 下一步
+1. 查看 docs/agile-readme.md 了解完整工作流程
+2. 使用模板创建初始 PRD
+3. 与 AI 交互完善项目定义
+4. 生成架构文档
+5. 开始实施项目
+
+示例：
+
+@agile <或依赖现有的工作流程规则> 让我们使用 NextJs 15 构建一个 Web 应用程序来跟踪我们的月度收入和支出。我想要一个现代化的 UI、安全的 Supabase 存储和现代化的 API 等等...
